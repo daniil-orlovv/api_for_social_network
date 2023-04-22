@@ -17,5 +17,5 @@ router.register('follow', RetrieveCreateFollow, basename='rc_follow')
 urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
-    path('v1/', include(router.urls)),
+    path('api/v1/', include(router.urls)),
 ]

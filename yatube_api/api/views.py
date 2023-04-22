@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 
 from posts.models import Post, Comment, Follow, Group
@@ -13,6 +14,9 @@ class CRUDPost(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
 
 class CRUDComment(viewsets.ModelViewSet):
     """
@@ -22,6 +26,10 @@ class CRUDComment(viewsets.ModelViewSet):
 
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+
+    def perform_create(self, serializer):
+        post = get_object_or_404(Post, id=self.kwargs.get('post_id'))
+        serializer.save(author=self.request.user, post=post)
 
 
 class ListRetrieveGroup(viewsets.ReadOnlyModelViewSet):
@@ -40,3 +48,6 @@ class RetrieveCreateFollow(viewsets.ModelViewSet):
 
     queryset = Follow.objects.all()
     serializer_class = FollowSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
