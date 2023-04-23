@@ -33,13 +33,15 @@ class FollowSerializer(serializers.ModelSerializer):
         queryset=User.objects.all(),
         default=serializers.CurrentUserDefault(),
     )
-    following = serializers.PrimaryKeyRelatedField(
-        read_only=True, default=serializers.CurrentUserDefault(),)
+    following = serializers.SlugRelatedField(
+        read_only=False,
+        slug_field='username',
+        queryset=User.objects.all(),
+        default=serializers.CurrentUserDefault(),
+    )
 
     def validate(self, data):
-        user = data.get('user')
-        following = data.get('following')
-        if user == following:
+        if data['user'] == data['following']:
             raise serializers.ValidationError(
                 'Пользователь не может подписаться на самого себя!')
         return data
