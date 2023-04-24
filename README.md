@@ -64,7 +64,8 @@ python3 manage.py runserver
 `GET http://127.0.0.1:8000/api/v1/posts/`
 
 Создание поста:
-`POST http://127.0.0.1:8000/api/v1/posts/`
+POST-запрос на `http://127.0.0.1:8000/api/v1/posts/`
+В теле запроса:
 JSON:
 ```
 {
