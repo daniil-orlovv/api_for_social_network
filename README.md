@@ -16,7 +16,7 @@ https://github.com/daniil-orlovv/api_final_yatube.git
 cd api_final_yatube
 ```
 
-Cоздать и активировать виртуальное окружение:
+Cоздать виртуальное окружение:
 
 ```
 python3 -m venv env
@@ -26,6 +26,7 @@ python3 -m venv env
 python -m venv venv
 ```
 
+Активировать виртуальное окружение:
 ```
 source env/bin/activate
 ```
