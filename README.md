@@ -57,3 +57,17 @@ python3 manage.py migrate
 ```
 python3 manage.py runserver
 ```
+
+## Примеры запросов
+
+Получение всех постов:
+`GET http://127.0.0.1:8000/api/v1/posts/`
+
+Создание поста:
+`POST http://127.0.0.1:8000/api/v1/posts/`
+JSON:
+```
+{
+  "text": "Текст поста"
+}
+```
