@@ -9,7 +9,7 @@ class PostSerializer(serializers.ModelSerializer):
     author = SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
-        fields = '__all__'
+        fields = ('id', 'text', 'pub_date', 'author', 'image', 'group')
         model = Post
 
 
@@ -17,12 +17,12 @@ class CommentSerializer(serializers.ModelSerializer):
     author = serializers.SlugRelatedField(
         read_only=True, slug_field='username'
     )
-    post = serializers.SlugRelatedField(
-        read_only=True, slug_field='text', required=False
+    post = serializers.PrimaryKeyRelatedField(
+        read_only=True, required=False
     )
 
     class Meta:
-        fields = ('text', 'author', 'post', 'created')
+        fields = ('id', 'text', 'author', 'post', 'created')
         model = Comment
 
 

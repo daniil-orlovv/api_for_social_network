@@ -15,7 +15,7 @@ router.register('groups', ListRetrieveGroup, basename='lr_groups')
 router.register('follow', RetrieveCreateFollow, basename='rc_follow')
 
 urlpatterns = [
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.jwt')),
+    path('api/v1/', include('djoser.urls')),
+    path('api/v1/', include('djoser.urls.jwt')),
     path('api/v1/', include(router.urls)),
 ]
