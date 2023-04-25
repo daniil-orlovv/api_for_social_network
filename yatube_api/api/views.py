@@ -7,8 +7,6 @@ from posts.models import Post, Comment, Follow, Group
 from api.serializers import (
     PostSerializer, CommentSerializer, FollowSerializer, GroupSerializer)
 from api.permissions import AuthAuthorOnlyPermission
-from api.pagination import BasePagination
-
 
 class CRUDPost(viewsets.ModelViewSet):
     """
@@ -18,7 +16,6 @@ class CRUDPost(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = (AuthAuthorOnlyPermission,)
-    pagination_class = LimitOffsetPagination
     filter_backends = (DjangoFilterBackend, filters.SearchFilter)
     search_fields = ('text',)
 
@@ -40,7 +37,6 @@ class CRUDComment(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = (AuthAuthorOnlyPermission,)
-    pagination_class = BasePagination
     filter_backends = (DjangoFilterBackend, filters.SearchFilter)
     search_fields = ('text',)
 
@@ -66,7 +62,6 @@ class ListRetrieveGroup(viewsets.ReadOnlyModelViewSet):
 
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    pagination_class = BasePagination
 
 
 class RetrieveCreateFollow(viewsets.ModelViewSet):
@@ -78,7 +73,6 @@ class RetrieveCreateFollow(viewsets.ModelViewSet):
     serializer_class = FollowSerializer
     http_method_names = ['get', 'post']
     permission_classes = (permissions.IsAuthenticated,)
-    pagination_class = BasePagination
     filter_backends = (filters.SearchFilter,)
     search_fields = ("user__username", "following__username",)
 
