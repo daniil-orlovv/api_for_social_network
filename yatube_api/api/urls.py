@@ -1,7 +1,8 @@
 from django.urls import include, path
 from rest_framework.routers import SimpleRouter
-from api.views import (
-    CRUDPost, CRUDComment, ListRetrieveGroup, RetrieveCreateFollow)
+
+from api.views import (CRUDComment, CRUDPost, ListRetrieveGroup,
+                       RetrieveCreateFollow)
 
 router = SimpleRouter()
 
@@ -15,7 +16,7 @@ router.register('groups', ListRetrieveGroup, basename='lr_groups')
 router.register('follow', RetrieveCreateFollow, basename='rc_follow')
 
 urlpatterns = [
-    path('api/v1/', include('djoser.urls')),
-    path('api/v1/', include('djoser.urls.jwt')),
-    path('api/v1/', include(router.urls)),
+    path('v1/', include('djoser.urls')),
+    path('v1/', include('djoser.urls.jwt')),
+    path('v1/', include(router.urls)),
 ]
