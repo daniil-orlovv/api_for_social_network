@@ -2,10 +2,14 @@ from django.shortcuts import get_object_or_404
 from rest_framework import filters, permissions, viewsets
 from rest_framework.pagination import LimitOffsetPagination
 
-from api.permissions import AuthAuthorOnlyPermission
-from api.serializers import (CommentSerializer, FollowSerializer,
-                             GroupSerializer, PostSerializer)
-from posts.models import Group, Post, User
+from api.permissions import IsAuthorOrReadOnlyPermission
+from api.serializers import (
+    CommentSerializer,
+    FollowSerializer,
+    GroupSerializer,
+    PostSerializer,
+)
+from posts.models import Group, Post, User, Follow
 
 
 class CRUDPost(viewsets.ModelViewSet):
@@ -15,16 +19,11 @@ class CRUDPost(viewsets.ModelViewSet):
 
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = (AuthAuthorOnlyPermission,)
+    permission_classes = (IsAuthorOrReadOnlyPermission,)
     pagination_class = LimitOffsetPagination
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
-
-    def get_permissions(self):
-        if self.action in ('retrieve', 'list'):
-            return (permissions.IsAuthenticatedOrReadOnly(),)
-        return super().get_permissions()
 
 
 class CRUDComment(viewsets.ModelViewSet):
@@ -34,7 +33,7 @@ class CRUDComment(viewsets.ModelViewSet):
     """
 
     serializer_class = CommentSerializer
-    permission_classes = (AuthAuthorOnlyPermission,)
+    permission_classes = (IsAuthorOrReadOnlyPermission,)
 
     def perform_create(self, serializer):
         post = get_object_or_404(Post, id=self.kwargs.get('post_id'))
@@ -70,5 +69,5 @@ class RetrieveCreateFollow(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
     def get_queryset(self):
-        user_id = self.request.user.pk
-        return User.objects.get(pk=user_id).follower.all()
+        user = get_object_or_404(User, username=self.request.user.username)
+        return Follow.objects.filter(user=user)
