@@ -9,7 +9,7 @@ from api.serializers import (
     GroupSerializer,
     PostSerializer,
 )
-from posts.models import Group, Post, User, Follow
+from posts.models import Group, Post
 
 
 class CRUDPost(viewsets.ModelViewSet):
