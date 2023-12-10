@@ -23,8 +23,17 @@
 3. Установите зависимости из файла `requirements.txt`: `pip install -r requirements.txt`
 4. Выполните миграции: `python manage.py migrate`
 5. Перейдите в директорию с файлом `manage.py` и запустите сервер `python manage.py runserver`
-6. Проверьте работу сайта по адресу `http://127.0.0.1:8000/`
 
+
+
+# Доступные эндпоинты
+- `http://127.0.0.1:8000/api/v1/posts/` - получение всех постов или создание нового(`POST`, `GET`)
+- `http://127.0.0.1:8000/api/v1/posts/{post_id}` - получаем, редактируем или удаляем пост по id(`GET`, `PUT`, `PATCH`, `DELETE`)
+- `http://127.0.0.1:8000/api/v1/posts/{post_id}/comments/` - получение всех коментариев или создание нового(`GET`, `POST`)
+- `http://127.0.0.1:8000/api/v1/posts/(?P<post_id>\d+)/comments/{comment_id}/` - получение, удаление, изменение комментария(`GET`, `PUT`, `PATCH`, `DELETE`)
+- `http://127.0.0.1:8000/api/v1/groups/` - получение списка групп(`GET`)
+- `http://127.0.0.1:8000/api/v1/groups/{group_id}` - получение информации о группе(`GET`)
+- `http://127.0.0.1:8000/api/v1/follow/` - получаем или создаем подписку(`GET`, `POST`)
 
 
 # Примеры запросов
