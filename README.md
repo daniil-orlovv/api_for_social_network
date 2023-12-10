@@ -1,4 +1,4 @@
-#API Yatube
+# Social Network
 
 ## Описание проекта
 
