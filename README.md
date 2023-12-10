@@ -7,14 +7,25 @@
 ## Назначение проекта
 Этот проект решает проблему передачи данных между сервисом Социальная сеть и другими сервисами с помощью REST API. Реализованы методы CRUD - чтение, запись, обвновление и удаление.
 
-## Требования
-- **Django - 3.2.16**
-- **Django REST Framework - 3.12.4**
-- **Djoser - 2.1.0**
+## Требования и зависимости
+- **Django==3.2.16**
+- **pytest==6.2.4**
+- **pytest-pythonpath==0.7.3**
+- **pytest-django==4.4.0**
+- **djangorestframework==3.12.4**
+- **djangorestframework-simplejwt==4.7.2**
+- **django-filter==23.1** 
+- **Pillow==9.3.0**
+- **PyJWT==2.1.0**
+- **requests==2.26.0**
+- **djoser==2.1.0**
+- **python-dotenv==1.0.0**
 
 ## Зачем был реализован проект?
 Закрепление следующих знаний и навыков: `Django`, `Django REST Framework`, `JWT + Djoser` 
 
+## Технологии
+`Django REST Framework`, `Djoser`, `JWT`, `Sqlite3`
 
 
 # :rocket: Инструкция по развертыванию и запуску
