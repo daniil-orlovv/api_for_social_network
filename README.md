@@ -1,64 +1,33 @@
-# Social Network
+# REST API для социальной сети
 
-## Описание проекта
 
-Этот проект решает проблему передачи данных между сервисом Yatube и другими сервисами с помощью REST API.
 
-## Установка
+# Описание
 
-Клонировать репозиторий и перейти в него в командной строке:
+## Назначение проекта
+Этот проект решает проблему передачи данных между сервисом Социальная сеть и другими сервисами с помощью REST API. Реализованы методы CRUD - чтение, запись, обвновление и удаление.
 
-```
-https://github.com/daniil-orlovv/api_final_yatube.git
-```
+## Требования
+- **Django - 3.2.16**
+- **Django REST Framework - 3.12.4**
+- **Djoser - 2.1.0**
 
-```
-cd api_final_yatube
-```
+## Зачем был реализован проект?
+Закрепление следующих знаний и навыков: `Django`, `Django REST Framework`, `JWT + Djoser` 
 
-Cоздать виртуальное окружение:
 
-```
-python3 -m venv env
-```
-или
-```
-python -m venv venv
-```
 
-Активировать виртуальное окружение:
+# :rocket: Инструкция по развертыванию и запуску
+1. Клонируйте репозиторий на компьютер: `git clone <ссылка SSH>`
+2. Создайте и активируйте виртуальное окружение: `python -m venv venv` -> `source venv/scripts/activate`
+3. Установите зависимости из файла `requirements.txt`: `pip install -r requirements.txt`
+4. Выполните миграции: `python manage.py migrate`
+5. Перейдите в директорию с файлом `manage.py` и запустите сервер `python manage.py runserver`
+6. Проверьте работу сайта по адресу `http://127.0.0.1:8000/`
 
-```
-source env/bin/activate
-```
-или
-```
-source venv/scripts/activare
-```
 
-Установить зависимости из файла requirements.txt:
 
-```
-python3 -m pip install --upgrade pip
-```
-
-```
-pip install -r requirements.txt
-```
-
-Выполнить миграции:
-
-```
-python3 manage.py migrate
-```
-
-Запустить проект:
-
-```
-python3 manage.py runserver
-```
-
-## Примеры запросов
+# Примеры запросов
 
 **Получение всех постов:**
 
@@ -80,3 +49,8 @@ POST-запрос на `http://127.0.0.1:8000/api/v1/posts/`
     "text": "Текст поста"
   }
   ```
+
+
+
+# Авторы
+Даниил Орлов
