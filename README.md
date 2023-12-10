@@ -23,7 +23,6 @@
 3. Установите зависимости из файла `requirements.txt`: `pip install -r requirements.txt`
 4. Выполните миграции: `python manage.py migrate`
 5. Перейдите в директорию с файлом `manage.py` и запустите сервер `python manage.py runserver`
-6. Проверьте работу сайта по адресу `http://127.0.0.1:8000/`
 
 
 
